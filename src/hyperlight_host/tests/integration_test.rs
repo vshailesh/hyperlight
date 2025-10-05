@@ -779,15 +779,11 @@ fn test_if_guest_is_able_to_get_return_values_from_host() {
 
     for i in 1..10 {
         if i < 6 {
-            let res = sbox3
-                .call::<bool>("HostReturnsBoolValue", (i, i))
-                .unwrap();
+            let res = sbox3.call::<bool>("HostReturnsBoolValue", (i, i)).unwrap();
             println!("{:?}", res);
             assert!(matches!(res, false));
         } else {
-            let res = sbox3
-                .call::<bool>("HostReturnsBoolValue", (i, i))
-                .unwrap();
+            let res = sbox3.call::<bool>("HostReturnsBoolValue", (i, i)).unwrap();
             println!("{:?}", res);
             assert!(matches!(res, true));
         }
