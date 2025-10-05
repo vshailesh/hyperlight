@@ -269,7 +269,7 @@ bool guest_fn_checks_if_host_returns_bool_value(int32_t a, int32_t b) {
   params[1].value.Int = b;
 
   const hl_FunctionCall host_call = {.function_name = "HostBool",
-                                     .parameters = &params,
+                                     .parameters = params,
                                      .parameters_len = 2,
                                      .return_type = hl_ReturnType_Bool
                                     };
