@@ -15,6 +15,9 @@ limitations under the License.
 */
 
 use alloc::boxed::Box;
+use alloc::ffi::CString;
+use alloc::string::String;
+use alloc::vec::Vec;
 use core::ffi::{CStr, c_char};
 
 use hyperlight_common::flatbuffer_wrappers::util::get_flatbuffer_result;

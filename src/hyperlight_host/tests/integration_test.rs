@@ -772,16 +772,16 @@ fn log_test_messages(levelfilter: Option<log::LevelFilter>) {
 fn test_if_guest_is_able_to_get_return_values_from_host() {
     let mut sbox1 = new_uninit().unwrap();
 
-    sbox1 = sbox1.register("HostBool", |a: i32, b: i32| a + b > 10);
-    sbox1 = sbox1.evolve().unwrap();
+    sbox1.register("HostBool", |a: i32, b: i32| a + b > 10).unwrap();
+    let mut sbox3 = sbox1.evolve().unwrap();
 
     for i in 1..10 {
         if i < 6 {
-            let res = sbox1.call::<()>("HostReturnsBoolValue", (i, i)).unwrap_err();
+            let res = sbox3.call::<bool>("HostReturnsBoolValue", (i, i)).unwrap_err();
             println!("{:?}", res);
             assert!(matches!(res, false));
         } else {
-            let res = sbox1.call::<()>("HostReturnsBoolValue", (i, i)).unwrap_err();
+            let res = sbox3.call::<bool>("HostReturnsBoolValue", (i, i)).unwrap_err();
             println!("{:?}", res);
             assert!(matches!(res, true));
         }
