@@ -96,7 +96,7 @@ pub extern "C" fn hl_flatbuffer_result_from_Bytes(data: *const u8, len: usize) -
 }
 
 #[unsafe(no_mangle)]
-pub extern "C" fn hl_flatbuffer_result_from_Bool(value: i32) -> Box<FfiVec> {
+pub extern "C" fn hl_flatbuffer_result_from_Bool(value: bool) -> Box<FfiVec> {
     let vec = get_flatbuffer_result(value);
 
     Box::new(unsafe { FfiVec::from_vec(vec) })
