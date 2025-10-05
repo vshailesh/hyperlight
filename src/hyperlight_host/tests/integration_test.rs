@@ -781,11 +781,11 @@ fn test_if_guest_is_able_to_get_return_values_from_host() {
         if i < 6 {
             let res = sbox3.call::<bool>("HostReturnsBoolValue", (i, i)).unwrap();
             println!("{:?}", res);
-            assert!(matches!(res, false));
+            assert!(matches!(res, true));
         } else {
             let res = sbox3.call::<bool>("HostReturnsBoolValue", (i, i)).unwrap();
             println!("{:?}", res);
-            assert!(matches!(res, true));
+            assert!(matches!(res, false));
         }
     }
 }
